@@ -3,13 +3,17 @@ import random
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-TELEGRAM_TOKEN = "8216500088:AAGBvLEke9VLYwPJrf22H84YTuOS_G3T7oc" 
+TELEGRAM_TOKEN = "8216500088:AAG_B14hLVqCM-bXCj7nhHCTBgXGZzIKKlo" 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user = update.effective_user
-    await update.message.reply_text(f"សួស្តី {user.first_name}!
-ខ្ញុំគឺជា Bot សម្រាប់វិភាគសញ្ញា XAUUSD។
-សូមផ្ញើរូបភាពក្រាហ្វ MT5 របស់អ្នកមកខ្ញុំ។")
+    await update.message.reply_text(
+        f"សួស្តី {user.first_name}!
+"
+        "ខ្ញុំគឺជា Bot សម្រាប់វិភាគសញ្ញា XAUUSD។
+"
+        "សូមផ្ញើរូបភាពក្រាហ្វ MT5 របស់អ្នកមកខ្ញុំ។"
+    )
 
 async def handle_text_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("សូមផ្ញើជា 'រូបភាព' នៃក្រាហ្វ MT5។ ខ្ញុំមិនយល់សារជាអក្សរទេ។")
@@ -24,10 +28,15 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     
     response_text = (
         f"✅ ការវិភាគបានចប់ហើយ!
-\n"
-        f"សញ្ញាដែលបានទស្សន៍ទាយ: **{prediction}**\n"
-        f"កម្រិតទំនុកចិត្ត: **{confidence_level}%**\n\n"
-        f"**ការព្រមាន៖** នេះជាការទស្សន៍ទាយដោយ Bot ហើយអាចមានកំហុស។ សូមប្រើការវិភាគផ្ទាល់ខ្លួនមុនពេលធ្វើការជួញដូរ។"
+
+"
+        f"សញ្ញាដែលបានទស្សន៍ទាយ: **{prediction}**
+"
+        f"កម្រិតទំនុកចិត្ត: **{confidence_level}%**
+
+"
+        "**ការព្រមាន៖** នេះជាការទស្សន៍ទាយដោយ Bot ហើយអាចមានកំហុស។ "
+        "សូមប្រើការវិភាគផ្ទាល់ខ្លួនមុនពេលធ្វើការជួញដូរ។"
     )
 
     await message.reply_text(response_text, parse_mode='Markdown')
